@@ -5,7 +5,7 @@ public class Radix {
     }
 
     public static int length(int n) {
-        return String.valueOf(n).length();
+        return (int)(Math.log10(n));
     }
 
     // public static void merge(MyLinkedList orginal, MyLinkedList[] buckets) {
