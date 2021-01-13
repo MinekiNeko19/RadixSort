@@ -105,11 +105,11 @@ public class Radix {
         // radixSortSimple(b);
 
         // testing radixSort
-        SortableLinkedList b = new SortableLinkedList();
-        b.add(32); b.add(-32); b.add(23); b.add(34); b.add(44);
-        b.add(-50); b.add(41); b.add(11); b.add(12); b.add(-42);
-        b.add(34); b.add(87); b.add(77); b.add(-58); b.add(8);
-        radixSort(b);
-        System.out.println(b.toString());
+        // SortableLinkedList b = new SortableLinkedList();
+        // b.add(32); b.add(-32); b.add(23); b.add(34); b.add(44);
+        // b.add(-50); b.add(41); b.add(11); b.add(12); b.add(-42);
+        // b.add(34); b.add(87); b.add(77); b.add(-58); b.add(8);
+        // radixSort(b);
+        // System.out.println(b.toString());
     }
 }
