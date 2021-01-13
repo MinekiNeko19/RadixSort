@@ -19,11 +19,15 @@ public class Radix {
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new SortableLinkedList();
         }
-        int longest = 0;
-        for (int i = 0; i < data.size();i++) {
-            buckets[nth(data.get(i),0)].add(data.get(i));
+        for (int i = 0; data.size() != 0;i++) {
+            buckets[nth(data.get(0),0)].add(data.get(0));
+            data.remove(0);
         }
         bucketPrint(buckets);
+        System.out.println(data.toString());
+        merge(data,buckets);
+        bucketPrint(buckets);
+        System.out.println(data.toString());
     }
 
     private static void bucketPrint(SortableLinkedList[] b) {
