@@ -9,22 +9,7 @@ public class Radix {
     }
 
     public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
-        int longest = 0;
-        for (int i = 0; original.size() != 0; i++) {
-            int current = Integer.parseInt(original.get(0));
-            buckets[nth(current, 0)].add(""+current);
-            if (longest < length(current)) {
-                longest = length(current);
-            }
-            original.remove(0);
-        }
-        // bucketPrint(buckets);
-        // System.out.println(original.toString());
-        // System.out.println(original.size());
-        for (int i = 0; i < buckets.length; i++) {
-            original.extend(buckets[i]);
-        }
-        original.remove(0);
+        
     }
 
     private static void bucketPrint(MyLinkedList[] b) {
