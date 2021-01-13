@@ -9,7 +9,9 @@ public class Radix {
     }
 
     public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
-        
+        for (int i = 0; i < buckets.length; i++) {
+            original.extend(buckets[i]);
+        }
     }
 
     private static void bucketPrint(MyLinkedList[] b) {
@@ -22,17 +24,18 @@ public class Radix {
         // System.out.println(nth(1234567890,15));
         // System.out.println(length(1234567890));
 
+        // testing merge
         MyLinkedList[] b = new MyLinkedList[10];
         for (int i = 0; i < b.length; i++) {
             b[i] = new MyLinkedList();
         }
         MyLinkedList a = new MyLinkedList();
-        a.add("50"); a.add("41"); a.add("11"); a.add("12"); a.add("42");
-        a.add("32"); a.add("32"); a.add("23"); a.add("34"); a.add("44");
-        a.add("34"); a.add("87"); a.add("77"); a.add("58"); a.add("8");
+        b[5].add("50"); b[4].add("41"); b[1].add("11"); b[1].add("12"); b[4].add("42");
+        b[3].add("32"); b[3].add("32"); b[2].add("23"); b[3].add("34"); b[4].add("44");
+        b[3].add("34"); b[8].add("87"); b[7].add("77"); b[5].add("58"); b[0].add("8");
 
         merge(a,b);
-        System.out.println(a.toString());
+        // System.out.println(a.toString());
         // bucketPrint(b);
     }
 }
