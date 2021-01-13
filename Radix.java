@@ -30,10 +30,16 @@ public class Radix {
         merge(data,buckets);
         // bucketPrint(buckets);
         // System.out.println(data.toString());
-        for (int i = 1; longest != i; i++) {
-            buckets[nth(data.get(0),(int)Math.pow(10,i))].add(data.get(0));
-            data.remove(0);
-        }
+        
+        for (int i = 0; longest != i; i++) {
+            for (int j = 0; data.size() != 0; j++) {
+                buckets[nth(data.get(0),i)].add(data.get(0));
+                data.remove(0);
+            }
+            // bucketPrint(buckets);
+            merge(data,buckets);
+            // System.out.println(data.toString());
+        }       
     }
 
     private static void bucketPrint(SortableLinkedList[] b) {
