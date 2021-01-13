@@ -42,6 +42,37 @@ public class Radix {
         }       
     }
 
+    public static void radixSort(SortableLinkedList data) {
+        SortableLinkedList negatives = new SortableLinkedList();
+        SortableLinkedList positives = new SortableLinkedList();SortableLinkedList[] buckets = new SortableLinkedList[10];
+        int longest = 0;
+        for (int i = 0; i < buckets.length; i++) {
+            buckets[i] = new SortableLinkedList();
+        }
+
+        for (int i = 0; data.size() != 0; i++) {
+            int current = data.get(0);
+            if (current < 0) {
+                negatives.add(-current);
+                current = -current;
+            } else {
+                positives.add(current);
+            }
+            if (longest < length(current)) {
+                longest = length(current);
+            }
+            data.remove(0);
+        }
+
+        radixSortSimple(negatives);   radixSortSimple(positives);
+        for (int i = negatives.size()-1; i > 0; i--) {
+            data.add(-negatives.get(i));
+        }
+        for (int i = 0; i < positives.size(); i++) {
+            data.add(positives.get(i));
+        }
+    }
+
     private static void bucketPrint(SortableLinkedList[] b) {
         for (int i = 0; i < b.length; i++) {
             System.out.println("Bucket " + i + b[i].toString());
@@ -67,10 +98,18 @@ public class Radix {
         // bucketPrint(b);
 
         // testing radixSortSimple
+        // SortableLinkedList b = new SortableLinkedList();
+        // b.add(32); b.add(32); b.add(23); b.add(34); b.add(44);
+        // b.add(50); b.add(41); b.add(11); b.add(12); b.add(42);
+        // b.add(34); b.add(87); b.add(77); b.add(58); b.add(8);
+        // radixSortSimple(b);
+
+        // testing radixSort
         SortableLinkedList b = new SortableLinkedList();
-        b.add(32); b.add(32); b.add(23); b.add(34); b.add(44);
-        b.add(50); b.add(41); b.add(11); b.add(12); b.add(42);
-        b.add(34); b.add(87); b.add(77); b.add(58); b.add(8);
-        radixSortSimple(b);
+        b.add(32); b.add(-32); b.add(23); b.add(34); b.add(44);
+        b.add(-50); b.add(41); b.add(11); b.add(12); b.add(-42);
+        b.add(34); b.add(87); b.add(77); b.add(-58); b.add(8);
+        radixSort(b);
+        System.out.println(b.toString());
     }
 }
