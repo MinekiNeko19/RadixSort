@@ -16,18 +16,24 @@ public class Radix {
 
     public static void radixSortSimple(SortableLinkedList data) {
         SortableLinkedList[] buckets = new SortableLinkedList[10];
+        int longest = 0;
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new SortableLinkedList();
         }
         for (int i = 0; data.size() != 0;i++) {
             buckets[nth(data.get(0),0)].add(data.get(0));
+            if (length(data.get(0)) > longest) longest = length(data.get(0));
             data.remove(0);
         }
-        bucketPrint(buckets);
-        System.out.println(data.toString());
+        // bucketPrint(buckets);
+        // System.out.println(data.toString());
         merge(data,buckets);
-        bucketPrint(buckets);
-        System.out.println(data.toString());
+        // bucketPrint(buckets);
+        // System.out.println(data.toString());
+        for (int i = 1; longest != i; i++) {
+            buckets[nth(data.get(0),(int)Math.pow(10,i))].add(data.get(0));
+            data.remove(0);
+        }
     }
 
     private static void bucketPrint(SortableLinkedList[] b) {
