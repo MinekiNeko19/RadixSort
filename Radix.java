@@ -14,7 +14,19 @@ public class Radix {
         }
     }
 
-    private static void bucketPrint(MyLinkedList[] b) {
+    public static void radixSortSimple(SortableLinkedList data) {
+        SortableLinkedList[] buckets = new SortableLinkedList[10];
+        for (int i = 0; i < buckets.length; i++) {
+            buckets[i] = new SortableLinkedList();
+        }
+        int longest = 0;
+        for (int i = 0; i < data.size();i++) {
+            buckets[nth(data.get(i),0)].add(data.get(i));
+        }
+        bucketPrint(buckets);
+    }
+
+    private static void bucketPrint(SortableLinkedList[] b) {
         for (int i = 0; i < b.length; i++) {
             System.out.println("Bucket " + i + b[i].toString());
         }
@@ -37,5 +49,12 @@ public class Radix {
         // merge(a,b);
         // System.out.println(a.toString());
         // bucketPrint(b);
+
+        // testing radixSortSimple
+        SortableLinkedList b = new SortableLinkedList();
+        b.add(32); b.add(32); b.add(23); b.add(34); b.add(44);
+        b.add(50); b.add(41); b.add(11); b.add(12); b.add(42);
+        b.add(34); b.add(87); b.add(77); b.add(58); b.add(8);
+        radixSortSimple(b);
     }
 }
