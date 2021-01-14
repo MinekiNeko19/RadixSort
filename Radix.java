@@ -30,13 +30,11 @@ public class Radix {
         merge(data,buckets);
         
         for (int i = 1; longest != i; i++) {
-            for (int j = 0; data.size() != 0; j++) {
+            while (data.size() != 0) {
                 int current = data.remove(0);
                 buckets[nth(current,i)].add(current);
             }
-            // bucketPrint(buckets);
             merge(data,buckets);
-            // System.out.println(data.toString());
         }       
     }
 
