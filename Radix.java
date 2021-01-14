@@ -21,21 +21,18 @@ public class Radix {
             buckets[i] = new SortableLinkedList();
         }
 
-        // gets the longest length/number of times to loop
+        //first loop: gets the longest length/number of times to loop
         while (data.size() != 0) {
-            int current = data.get(0);
+            int current = data.remove(0);
             buckets[nth(current,0)].add(current);
             if (length(current) > longest) longest = length(current);
-            data.remove(0);
         }
         merge(data,buckets);
         
-
         for (int i = 1; longest != i; i++) {
             for (int j = 0; data.size() != 0; j++) {
-                int current = data.get(0);
+                int current = data.remove(0);
                 buckets[nth(current,i)].add(current);
-                data.remove(0);
             }
             // bucketPrint(buckets);
             merge(data,buckets);
