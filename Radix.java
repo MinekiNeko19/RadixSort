@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Radix {
     public static int nth(int n, int col) {
         int temp = (int)Math.pow(10, col);
@@ -40,7 +42,8 @@ public class Radix {
 
     public static void radixSort(SortableLinkedList data) {
         SortableLinkedList negatives = new SortableLinkedList();
-        SortableLinkedList positives = new SortableLinkedList();SortableLinkedList[] buckets = new SortableLinkedList[10];
+        SortableLinkedList positives = new SortableLinkedList();
+        SortableLinkedList[] buckets = new SortableLinkedList[10];
         int longest = 0;
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new SortableLinkedList();
@@ -60,8 +63,8 @@ public class Radix {
             data.remove(0);
         }
 
-        radixSortSimple(negatives);   radixSortSimple(positives);
-        for (int i = negatives.size()-1; i > 0; i--) {
+        radixSortSimple(negatives);  radixSortSimple(positives);
+        for (int i = negatives.size()-1; i >= 0; i--) {
             data.add(-negatives.get(i));
         }
         for (int i = 0; i < positives.size(); i++) {
@@ -107,5 +110,36 @@ public class Radix {
         // b.add(34); b.add(87); b.add(77); b.add(-58); b.add(8);
         // radixSort(b);
         // System.out.println(b.toString());
+
+        // testing radixSort again
+        // int[] arr = new int[10];
+        // SortableLinkedList nums = new SortableLinkedList();
+        // for (int i = 0; i < arr.length; i=i+2) {
+        //     int add = (int)(Math.random()*100);
+        //     int addneg = (int)(Math.random()*100);
+        //     arr[i] = add;
+        //     arr[i+1] = -addneg;
+        //     nums.add(add);
+        //     nums.add(-addneg);
+        // }
+
+        // Arrays.sort(arr);
+        // try{
+        //   Radix.radixSort(nums);
+        //   boolean correct =true;
+        //   for(int i = 0; i < arr.length; i++){
+        //     if( arr[i]!=nums.remove(0)){
+        //       correct = false;
+        //     }
+        //   }
+        //   if(correct){
+        //     System.out.println("we good");
+        //   }else{
+        //     System.out.println("bad sort");
+        //   }
+        // }catch(Exception e){
+        //   e.printStackTrace();
+        //   System.out.println("Exception in radixSort");
+        // }
     }
 }
